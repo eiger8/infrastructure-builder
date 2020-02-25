@@ -1,3 +1,6 @@
+provider "aws" {
+  region = var.region
+}
 resource "aws_vpc" "env-vpc" {
   cidr_block = var.ip-ranges["public-subnet"]
   enable_dns_support = "true"
