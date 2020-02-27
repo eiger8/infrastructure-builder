@@ -8,16 +8,16 @@ value = aws_vpc.env-vpc.cidr_block
 
 //Subnets relates data
 output "env-public-subnet-id" {
-  value = aws_subnet.env-public-subnet.id
+  value = aws_subnet.env-public-subnet[*].id
 }
 output "env-public-subnet-cidr" {
-  value = aws_subnet.env-public-subnet.cidr_block
+  value = aws_subnet.env-public-subnet[*].cidr_block
 }
 output "env-private-subnet-id" {
-  value = aws_subnet.env-private-subnet.id
+  value = aws_subnet.env-private-subnet[*].id
 }
 output "env-private-subnet-cidr" {
-  value = aws_subnet.env-private-subnet.cidr_block
+  value = aws_subnet.env-private-subnet[*].cidr_block
 }
 
 //Security groups related data

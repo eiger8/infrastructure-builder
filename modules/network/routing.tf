@@ -10,22 +10,26 @@ resource "aws_route_table" "public-routing-table" {
   }
 }
 resource "aws_route_table_association" "env-rta-pub" {
-  subnet_id = aws_subnet.env-public-subnet.id
+  count = length(var.zones)
+  subnet_id = element(aws_subnet.env-public-subnet[*].id, count.index)
   route_table_id = aws_route_table.public-routing-table.id
 }
 
 //Prepare private routing
 resource "aws_route_table" "private-routing-table" {
+  count = length(var.zones)
   vpc_id = aws_vpc.env-vpc.id
   route {
     cidr_block = "0.0.0.0/0"
+    gateway_id = "" //TODO Add nat instance
   }
   tags = {
     Name = "${var.env-name} Private Routing Table"
   }
 }
 resource "aws_route_table_association" "env-rta-priv" {
-  subnet_id = aws_subnet.env-private-subnet.id
-  route_table_id = aws_route_table.private-routing-table.id
+  count = length(var.zones)
+  subnet_id = element(aws_subnet.env-private-subnet[*].id, count.index)
+  route_table_id = element(aws_route_table.private-routing-table[*].id, count.index)
 }
 
