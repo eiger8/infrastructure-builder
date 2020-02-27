@@ -7,6 +7,7 @@ module "env-network" {
   region = var.region
   vpc-cidr = var.vpc-cidr
   zones = var.zones
+  nat-instance-id = aws_instance.nat-bastion[*].id
 }
 provider "aws" {
   region = var.region

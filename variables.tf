@@ -22,12 +22,6 @@ variable "ssh_key" {
 variable "vpc-cidr" {
   default = "10.0.0.0/16"
 }
-//variable "public-subnet" { //TODO remove from code
-//  default = "10.0.1.0/16"
-//}
-//variable "private-subnet" {
-//  default = "10.0.2.0/16"
-//}
 variable "ip-allowed" {
   type = map(string)
   default = {

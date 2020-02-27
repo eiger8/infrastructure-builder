@@ -21,7 +21,7 @@ resource "aws_route_table" "private-routing-table" {
   vpc_id = aws_vpc.env-vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "" //TODO Add nat instance
+    instance_id = element(var.nat-instance-id[*], count.index)
   }
   tags = {
     Name = "${var.env-name} Private Routing Table"
