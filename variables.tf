@@ -15,8 +15,8 @@ variable "env-name" {
 variable "ssh_key" {
   type = map(string)
   default = {
-    "name" = "devops-cluster"
-    "path" = "~/.devops-cluster.pem"
+    name = "devops-cluster"
+    path = "./devops-cluster.pem"
   }
 }
 variable "vpc-cidr" {
