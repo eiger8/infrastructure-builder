@@ -17,11 +17,10 @@ resource "aws_route_table_association" "env-rta-pub" {
 
 //Prepare private routing
 resource "aws_route_table" "private-routing-table" {
-  count = length(var.zones)
   vpc_id = aws_vpc.env-vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    instance_id = element(var.nat-instance-id[*], count.index)
+    instance_id = var.nat-instance-id
   }
   tags = {
     Name = "${var.env-name} Private Routing Table"

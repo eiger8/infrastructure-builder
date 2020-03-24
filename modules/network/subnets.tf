@@ -14,7 +14,7 @@ resource "aws_subnet" "env-public-subnet" {
 resource "aws_subnet" "env-private-subnet" {
   vpc_id = aws_vpc.env-vpc.id
   count = length(var.zones)
-  cidr_block = cidrsubnet(var.vpc-cidr, 5, count.index + 1)
+  cidr_block = cidrsubnet(var.vpc-cidr, 4, count.index + 1)
   map_public_ip_on_launch = "false"
   availability_zone = element(var.zones, count.index)
   tags = {
