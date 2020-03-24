@@ -1,9 +1,9 @@
 //VPC resource related data
 output "env-vpc-id" {
-value = aws_vpc.env-vpc.id
+  value = aws_vpc.env-vpc.id
 }
 output "env-vpc-cidr" {
-value = aws_vpc.env-vpc.cidr_block
+  value = aws_vpc.env-vpc.cidr_block
 }
 
 //Subnets relates data

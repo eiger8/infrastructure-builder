@@ -25,7 +25,9 @@ variable "vpc-cidr" {
 variable "ip-allowed" {
   type = map(string)
   default = {
-    "inbound-fw-1" = "213.109.239.143/32"   //Private network
-    "inbound-fw-2" = "185.112.0.0/16"       //Softserve subnet
+    //Private network
+    "inbound-fw-1" = "213.109.239.143/32"
+    //Softserve subnet
+    "inbound-fw-2" = "185.112.0.0/16"
   }
 }
